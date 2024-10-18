@@ -1,4 +1,4 @@
-# URL SHORTENER
+# DJANGO IMAGE UPLOAD
 ---
 
 ### Compiling Translation Messages in Django
