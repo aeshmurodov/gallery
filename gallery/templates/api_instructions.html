@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "Image Upload API Instructions" %}</h1>
+    <p>{% trans "Use the following endpoint to upload images via API:" %}</p>
+    <h4>POST /api/upload/</h4>
+    <p>{% trans "To upload an image, send a POST request to the above endpoint with the image file, title, and description in the form-data." %}</p>
+    
+    <h5>{% trans "Example using cURL:" %}</h5>
+    <pre>
+curl -X POST http://{{ request.get_host }}/api/upload/ \
+-F "image=@path_to_your_image.jpg" \
+-F "title=Your Image Title" \
+-F "description=Your Image Description"
+    </pre>
+    
+    <h5>{% trans "Response:" %}</h5>
+    <p>{% trans "On success, you will receive a JSON response containing the URL of the uploaded image, title, and description:" %}</p>
+    <pre>
+{
+    "url": "/media/image.jpg",
+    "title": "Your Image Title",
+    "description": "Your Image Description"
+}
+    </pre>
+
+    <h5>{% trans "Errors:" %}</h5>
+    <p>{% trans "If there are validation errors, the response will contain an error message:" %}</p>
+    <pre>
+{
+    "error": {
+        "image": ["This field is required."]
+    }
+}
+    </pre>
+
+    <a href="{% url 'gallery' %}" class="btn btn-primary mt-4">{% trans "Go to Gallery" %}</a>
+{% endblock %}

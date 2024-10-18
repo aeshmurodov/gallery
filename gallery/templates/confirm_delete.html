@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="alert alert-danger" role="alert">
+    {% trans "Are you sure you want to delete" %} "{{ image.title }}"?
+</div>
+<form method="POST" class="my-4">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">
+        {% trans "Yes, 100% sure" %}
+    </button>
+</form>
+<a href="{% url 'gallery' %}" class="btn btn-primary">
+    {% trans "Oh no no no, take me back!" %}
+</a>
+{% endblock %}
